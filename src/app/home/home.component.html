@@ -1,0 +1,25 @@
+<h1>Hello. lets play Ping Pong</h1>
+<form [formGroup]="playForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="inputStr">Input</label>
+    <input
+      type="text"
+      formControlName="inputStr"
+      class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.inputStr.errors }"
+    />
+    <div *ngIf="submitted && f.inputStr.errors" class="invalid-feedback">
+      <div *ngIf="f.inputStr.errors.required">Input is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-primary">
+      <span
+        *ngIf="loading"
+        class="spinner-border spinner-border-sm mr-1"
+      ></span>
+      Play
+    </button>
+    <!-- <a routerLink="/register" class="btn btn-link">Register</a> -->
+  </div>
+</form>
